@@ -23,7 +23,7 @@ def main():
     predict()
 
 def predict():
-    markalar = pd.read_csv('data/markalar.csv')
+    markalar = pd.read_csv("../data/markalar.csv")
 
     st.title('2. El Araç Fiyat Tahmin Uygulaması ')
 
