@@ -62,12 +62,12 @@ def predict():
 
     prediction_value = create_prediction_value(selected_km,selected_brand,selected_year,selected_engine,selected_gear,selected_fuel)
 
-
     if st.button("Tahmin Yap"):
         result = predict_models(prediction_value)
+        txt = "Tahmin Edilen Fiyat: {price:,} TL!"
         if result != None:
             st.success("Tahmin Başarılı")
-            st.subheader("Tahmin Edilen Fiyat: "+ result + "TL")
+            st.subheader(txt.format(price=result))
         else:
             st.error('Tahmin yaparken hata meydana geldi!')
 
@@ -89,7 +89,7 @@ def create_prediction_value(kilometre, marka, model_yili, motor_hacmi, vites_tip
 
 def predict_models(res):
     rf_model = joblib.load("servisleme/data/rf_model.sav")
-    result = str(int(rf_model.predict(res))).strip('[]')
+    result = int(rf_model.predict(res))
     return result
 
 if __name__ == "__main__":
