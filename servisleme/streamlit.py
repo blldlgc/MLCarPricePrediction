@@ -88,7 +88,7 @@ def create_prediction_value(kilometre, marka, model_yili, motor_hacmi, vites_tip
     return res
 
 def predict_models(res):
-    rf_model = joblib.load('servisleme/data/rf_model.sav')
+    rf_model = joblib.load("servisleme/data/rf_model.sav")
     result = str(int(rf_model.predict(res))).strip('[]')
     return result
 
